@@ -287,11 +287,7 @@ export default function AccessibilityToolbar() {
         body.high-contrast img { filter: grayscale(1) contrast(2); }
 
         /* EXCEPTION: Accessibility toolbar + chatbot always stay visible & fixed */
-        [data-a11y-toolbar]:not(svg):not(circle):not(path),
-        [data-a11y-toolbar] *:not(svg):not(circle):not(path) {
-          background-color: unset !important;
-          color: unset !important;
-          border-color: unset !important;
+        body.high-contrast [data-a11y-toolbar] {
           filter: none !important;
         }
         [data-a11y-toolbar] svg,
