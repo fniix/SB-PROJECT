@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  /* SB Project Brand Colors */
+  --color-sb-navy: #062A4F;
+  --color-sb-navy-dark: #041d38;
+  --color-sb-navy-light: #1a3a5c;
+  --color-sb-gold: #D2A10C;
+  --color-sb-gold-dark: #b8860b;
+  --color-sb-gold-light: #f0c040;
+  --color-sb-cream: #FBF5EE;
+  --color-sb-cream-dark: #F5EDD8;
+  --color-sb-teal: #0F8B8D;
+  --color-sb-charcoal: #2E2E2E;
+  --color-sb-text: #2E2E2E;
+  --color-sb-text-muted: #64748b;
+
+  /* Student Mode Colors */
+  --color-sb-yellow: #FFF4C7;
+  --color-sb-mint: #DFF8F4;
+  --color-sb-lavender: #EFE8FF;
+  --color-sb-coral: #FFE4E1;
+
+  --color-background: var(--color-sb-cream);
+  --color-foreground: var(--color-sb-text);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   THEME SYSTEM — Parent Mode (default) + Student Hero Mode
+   CSS Variables change based on [data-theme] attribute on <html>
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Parent Mode (Default) ── */
+:root,
+[data-theme="parent"] {
+  --theme-bg: #FBF5EE;
+  --theme-bg-card: #FFFFFF;
+  --theme-bg-sidebar: #062A4F;
+  --theme-bg-header: #FFFFFF;
+  --theme-bg-accent: rgba(210, 161, 12, 0.08);
+  --theme-bg-hover: rgba(210, 161, 12, 0.12);
+
+  --theme-text-primary: #062A4F;
+  --theme-text-secondary: #2E2E2E;
+  --theme-text-muted: #64748b;
+  --theme-text-on-dark: #FFFFFF;
+
+  --theme-border: #f1f5f9;
+  --theme-border-accent: rgba(210, 161, 12, 0.3);
+
+  --theme-accent: #D2A10C;
+  --theme-accent-hover: #b8860b;
+  --theme-accent-bg: rgba(210, 161, 12, 0.1);
+  --theme-accent-gradient: linear-gradient(135deg, #D2A10C, #f0c040);
+
+  --theme-cta-bg: #062A4F;
+  --theme-cta-text: #FFFFFF;
+  --theme-cta-hover: #041d38;
+  --theme-cta-border: #D2A10C;
+
+  --theme-card-shadow: 0 1px 3px rgba(6, 42, 79, 0.06);
+  --theme-card-hover-shadow: 0 8px 24px rgba(6, 42, 79, 0.1);
+  --theme-card-radius: 16px;
+
+  --theme-icon-style: stroke;
+  --theme-font-heading: 'Inter', sans-serif;
+  --theme-font-weight-heading: 700;
+}
+
+/* ── Student Hero Mode ── */
+[data-theme="student"] {
+  --theme-bg: #FEFCF5;
+  --theme-bg-card: #FFFFFF;
+  --theme-bg-sidebar: #1a1040;
+  --theme-bg-header: #FFFFFF;
+  --theme-bg-accent: rgba(139, 92, 246, 0.08);
+  --theme-bg-hover: rgba(139, 92, 246, 0.12);
+
+  --theme-text-primary: #1a1040;
+  --theme-text-secondary: #2E2E2E;
+  --theme-text-muted: #7c7c9a;
+  --theme-text-on-dark: #FFFFFF;
+
+  --theme-border: #f0eeff;
+  --theme-border-accent: rgba(139, 92, 246, 0.3);
+
+  --theme-accent: #8B5CF6;
+  --theme-accent-hover: #7C3AED;
+  --theme-accent-bg: rgba(139, 92, 246, 0.1);
+  --theme-accent-gradient: linear-gradient(135deg, #8B5CF6, #EC4899);
+
+  --theme-cta-bg: linear-gradient(135deg, #8B5CF6, #6366F1);
+  --theme-cta-text: #FFFFFF;
+  --theme-cta-hover: #7C3AED;
+  --theme-cta-border: #EC4899;
+
+  --theme-card-shadow: 0 2px 8px rgba(139, 92, 246, 0.08);
+  --theme-card-hover-shadow: 0 12px 32px rgba(139, 92, 246, 0.15);
+  --theme-card-radius: 20px;
+
+  --theme-icon-style: fill;
+  --theme-font-heading: 'Inter', sans-serif;
+  --theme-font-weight-heading: 800;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--theme-bg);
+    color: var(--theme-text-secondary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--theme-text-primary);
+    font-weight: var(--theme-font-weight-heading);
+    letter-spacing: -0.025em;
+    transition: color 0.3s ease;
+  }
+}
+
+::selection {
+  background-color: var(--theme-accent);
+  color: #ffffff;
+}
+
+/* ═══ Scrollbar ═══ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-text-primary);
+}
+
+/* ═══ Sidebar (Dashboard) ═══ */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.sidebar-link:hover {
+  background: var(--theme-bg-accent);
+  color: var(--theme-accent);
+}
+.sidebar-link.active {
+  background: var(--theme-bg-hover);
+  color: var(--theme-accent);
+  font-weight: 600;
+}
+.sidebar-link.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: var(--theme-accent);
+  border-radius: 0 3px 3px 0;
+}
+
+/* ═══ Cards ═══ */
+.stat-card {
+  background: var(--theme-bg-card);
+  border-radius: var(--theme-card-radius);
+  border: 1px solid var(--theme-border);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: var(--theme-card-shadow);
+}
+.stat-card:hover {
+  box-shadow: var(--theme-card-hover-shadow);
+}
+
+.premium-card {
+  background: var(--theme-bg-card);
+  border-radius: var(--theme-card-radius);
+  border: 1px solid var(--theme-border);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: var(--theme-card-shadow);
+}
+.premium-card:hover {
+  box-shadow: var(--theme-card-hover-shadow);
+  transform: translateY(-2px);
+}
+
+/* ═══ Badges ═══ */
+.gold-badge {
+  background: var(--theme-accent-gradient);
+  color: white;
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* ═══ Inputs ═══ */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--theme-accent) !important;
+  box-shadow: 0 0 0 3px var(--theme-accent-bg) !important;
+}
+
+/* ═══ Buttons ═══ */
+.btn-primary {
+  background: var(--theme-text-primary);
+  color: white;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: var(--theme-cta-hover);
+  border-color: var(--theme-accent);
+  box-shadow: 0 4px 12px rgba(6, 42, 79, 0.25);
+}
+
+.btn-gold {
+  background: var(--theme-accent);
+  color: white;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-gold:hover {
+  background: var(--theme-accent-hover);
+  box-shadow: 0 4px 12px rgba(210, 161, 12, 0.35);
+}
+
+/* ═══ Gradients ═══ */
+.bg-navy-gradient {
+  background: linear-gradient(135deg, #062A4F 0%, #1a3a5c 100%);
+}
+
+/* ═══ Glass Card ═══ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--theme-card-radius);
+}
+
+/* ═══ Student Mode Specific Styles ═══ */
+[data-theme="student"] .stat-card {
+  border-radius: 20px;
+  border-color: #f0eeff;
+}
+
+[data-theme="student"] .premium-card {
+  border-radius: 20px;
+  border-color: #f0eeff;
+}
+
+[data-theme="student"] .bg-navy-gradient {
+  background: linear-gradient(135deg, #1a1040 0%, #2d1b69 50%, #4c1d95 100%);
+}
+
+[data-theme="student"] .gold-badge {
+  background: linear-gradient(135deg, #8B5CF6, #EC4899);
+}
+
+/* Student mode: playful card backgrounds */
+[data-theme="student"] .student-card-yellow {
+  background: #FFF4C7;
+  border-color: #fde68a;
+}
+[data-theme="student"] .student-card-mint {
+  background: #DFF8F4;
+  border-color: #a7f3d0;
+}
+[data-theme="student"] .student-card-lavender {
+  background: #EFE8FF;
+  border-color: #c4b5fd;
+}
+[data-theme="student"] .student-card-coral {
+  background: #FFE4E1;
+  border-color: #fca5a5;
+}
+
+/* ═══ Theme Transition ═══ */
+* {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0s;
+}
+
+[data-theme-transitioning] * {
+  transition-duration: 0.3s !important;
+  transition-timing-function: ease !important;
+}
