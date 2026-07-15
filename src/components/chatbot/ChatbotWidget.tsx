@@ -93,7 +93,7 @@ export default function ChatbotWidget() {
       {isOpen && (
         <div
           data-a11y-toolbar
-          className="fixed bottom-24 right-6 z-[9998] flex flex-col rounded-2xl shadow-2xl overflow-hidden"
+          className="fixed bottom-24 right-6 z-[9998] flex flex-col rounded-2xl shadow-2xl overflow-hidden bg-white"
           style={{
             width: '360px',
             height: '500px',
